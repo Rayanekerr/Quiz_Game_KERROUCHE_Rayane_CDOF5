@@ -6,7 +6,7 @@ def main():
     print("Welcome to the Quiz Game!")
 
     # Liste des questions du quiz. Chaque question est un dictionnaire avec une question, des options et la réponse correcte.
-    questions = [
+    questions = <
     # Questions déjà existantes
     {"question": "What is the capital of France?", "options": ["Paris", "London", "Rome", "Berlin"], "answer": 1},
     {"question": "Which planet is known as the Red Planet?", "options": ["Earth", "Mars", "Jupiter", "Venus"], "answer": 2},
@@ -28,7 +28,7 @@ def main():
     # Moyenne
     {"question": "What is the square root of 81?", "options": ["7", "8", "9", "10"], "answer": 3}
 
-]
+>
 
     # Limite le nombre de questions à 10 ou au nombre total de questions disponibles, selon ce qui est plus petit
     num_questions = min(10, len(questions))
