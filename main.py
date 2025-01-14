@@ -5,14 +5,33 @@ def main():
     print("Welcome to the Quiz Game!")
 
     questions = [
-        {"question": "What is the capital of France?", "options": ["Paris", "London", "Rome", "Berlin"], "answer": 1},
-        {"question": "Which planet is known as the Red Planet?", "options": ["Earth", "Mars", "Jupiter", "Venus"], "answer": 2},
-        {"question": "What is 5 + 7?", "options": ["10", "11", "12", "13"], "answer": 3},
-        # Ajoute d'autres questions si nécessaire
-    ]
+    # Questions déjà existantes
+    {"question": "What is the capital of France?", "options": ["Paris", "London", "Rome", "Berlin"], "answer": 1},
+    {"question": "Which planet is known as the Red Planet?", "options": ["Earth", "Mars", "Jupiter", "Venus"], "answer": 2},
+    {"question": "What is 5 + 7?", "options": ["10", "11", "12", "13"], "answer": 3},
+    
+    # Nouvelles questions avec différentes difficultés
+    # Facile
+    {"question": "What is the largest ocean on Earth?", "options": ["Atlantic", "Indian", "Arctic", "Pacific"], "answer": 4},
+    
+    # Moyenne
+    {"question": "Which element has the chemical symbol 'O'?", "options": ["Oxygen", "Osmium", "Ozone", "Oxygenium"], "answer": 1},
+    
+    # Difficile
+    {"question": "Who wrote the play 'Romeo and Juliet'?", "options": ["Charles Dickens", "William Shakespeare", "Jane Austen", "Homer"], "answer": 2},
+    
+    # Facile
+    {"question": "Which animal is known as the King of the Jungle?", "options": ["Elephant", "Lion", "Tiger", "Bear"], "answer": 2},
+    
+    # Moyenne
+    {"question": "What is the square root of 81?", "options": ["7", "8", "9", "10"], "answer": 3}
+
+]
+
 
     num_questions = min(10, len(questions))
     questions = questions[:num_questions]
+
 
     score = 0
     time_limit = 10  # Time limit in seconds
@@ -60,6 +79,18 @@ def main():
         print()  # Print a blank line to move to the next question
 
     print(f"\nYou completed the quiz! Your final score is {score}/{len(questions)}.")
+    congratulate(score, len(questions))  # Appel de la fonction pour afficher un message de félicitations
+
+def congratulate(score, total):
+    """Affiche un message de félicitations basé sur le score"""
+    if score == total:
+        print("Excellent! You answered all questions correctly!")
+    elif score >= total * 0.7:
+        print("Well done! You did great!")
+    elif score >= total * 0.5:
+        print("Not bad! But you can do better!")
+    else:
+        print("Better luck next time! Keep trying!")
 
 
 if __name__ == "__main__":
