@@ -1,37 +1,96 @@
+import time
+import sys
+
 def main():
     print("Welcome to the Quiz Game!")
 
     questions = [
-        {"question": "What is the capital of France?", "options": ["Paris", "London", "Rome", "Berlin"], "answer": 1},
-        {"question": "Which planet is known as the Red Planet?", "options": ["Earth", "Mars", "Jupiter", "Venus"],
-         "answer": 2},
-        {"question": "What is 5 + 7?", "options": ["10", "11", "12", "13"], "answer": 3},
-    ]
+    # Questions déjà existantes
+    {"question": "What is the capital of France?", "options": ["Paris", "London", "Rome", "Berlin"], "answer": 1},
+    {"question": "Which planet is known as the Red Planet?", "options": ["Earth", "Mars", "Jupiter", "Venus"], "answer": 2},
+    {"question": "What is 5 + 7?", "options": ["10", "11", "12", "13"], "answer": 3},
+    
+    # Nouvelles questions avec différentes difficultés
+    # Facile
+    {"question": "What is the largest ocean on Earth?", "options": ["Atlantic", "Indian", "Arctic", "Pacific"], "answer": 4},
+    
+    # Moyenne
+    {"question": "Which element has the chemical symbol 'O'?", "options": ["Oxygen", "Osmium", "Ozone", "Oxygenium"], "answer": 1},
+    
+    # Difficile
+    {"question": "Who wrote the play 'Romeo and Juliet'?", "options": ["Charles Dickens", "William Shakespeare", "Jane Austen", "Homer"], "answer": 2},
+    
+    # Facile
+    {"question": "Which animal is known as the King of the Jungle?", "options": ["Elephant", "Lion", "Tiger", "Bear"], "answer": 2},
+    
+    # Moyenne
+    {"question": "What is the square root of 81?", "options": ["7", "8", "9", "10"], "answer": 3}
+
+]
+
+
+    num_questions = min(10, len(questions))
+    questions = questions[:num_questions]
+
 
     score = 0
+    time_limit = 10  # Time limit in seconds
 
     for i, q in enumerate(questions):
         print(f"\nQuestion {i + 1}: {q['question']}")
         for idx, option in enumerate(q['options'], start=1):
             print(f"{idx}. {option}")
 
+        start_time = time.time()  # Start the timer
+        answered = False
+
         while True:
+            elapsed_time = time.time() - start_time
+            remaining_time = time_limit - int(elapsed_time)
+
+            if remaining_time <= 0:
+                print("\nTime's up! You didn't answer in time.")
+                print(f"The correct answer was: {q['options'][q['answer'] - 1]}.")
+                break
+
+            # Display countdown in the same line (10, 9, 8...)
+            sys.stdout.write(f"\rTime left: {remaining_time} seconds")
+            sys.stdout.flush()
+
             try:
-                user_answer = int(input("Your answer (choose the number): "))
+                user_answer = int(input(f"\n\nYour answer (choose the number): "))
                 if 1 <= user_answer <= len(q['options']):
+                    if user_answer == q['answer']:
+                        print("Correct!")
+                        score += 1
+                    else:
+                        print(f"Wrong! The correct answer was: {q['options'][q['answer'] - 1]}.")
+                    answered = True
                     break
                 else:
                     print("Invalid choice. Please choose a valid option.")
             except ValueError:
                 print("Please enter a number.")
 
-        if user_answer == q['answer']:
-            print("Correct!")
-            score += 1
-        else:
-            print(f"Wrong! The correct answer was: {q['options'][q['answer'] - 1]}.")
+            # If answered or time is up, exit the loop
+            if answered or remaining_time <= 0:
+                break
+
+        print()  # Print a blank line to move to the next question
 
     print(f"\nYou completed the quiz! Your final score is {score}/{len(questions)}.")
+    congratulate(score, len(questions))  # Appel de la fonction pour afficher un message de félicitations
+
+def congratulate(score, total):
+    """Affiche un message de félicitations basé sur le score"""
+    if score == total:
+        print("Excellent! You answered all questions correctly!")
+    elif score >= total * 0.7:
+        print("Well done! You did great!")
+    elif score >= total * 0.5:
+        print("Not bad! But you can do better!")
+    else:
+        print("Better luck next time! Keep trying!")
 
 
 if __name__ == "__main__":
