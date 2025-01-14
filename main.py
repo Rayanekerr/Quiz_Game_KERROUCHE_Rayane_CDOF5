@@ -31,7 +31,7 @@ def main():
 
     num_questions = min(10, len(questions))
     questions = questions[:num_questions]
-    
+
 
     score = 0
     time_limit = 10  # Time limit in seconds
@@ -79,6 +79,18 @@ def main():
         print()  # Print a blank line to move to the next question
 
     print(f"\nYou completed the quiz! Your final score is {score}/{len(questions)}.")
+    congratulate(score, len(questions))  # Appel de la fonction pour afficher un message de félicitations
+
+def congratulate(score, total):
+    """Affiche un message de félicitations basé sur le score"""
+    if score == total:
+        print("Excellent! You answered all questions correctly!")
+    elif score >= total * 0.7:
+        print("Well done! You did great!")
+    elif score >= total * 0.5:
+        print("Not bad! But you can do better!")
+    else:
+        print("Better luck next time! Keep trying!")
 
 
 if __name__ == "__main__":
