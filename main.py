@@ -2,11 +2,28 @@ def main():
     print("Welcome to the Quiz Game!")
 
     questions = [
-        {"question": "What is the capital of France?", "options": ["Paris", "London", "Rome", "Berlin"], "answer": 1},
-        {"question": "Which planet is known as the Red Planet?", "options": ["Earth", "Mars", "Jupiter", "Venus"],
-         "answer": 2},
-        {"question": "What is 5 + 7?", "options": ["10", "11", "12", "13"], "answer": 3},
-    ]
+    # Questions déjà existantes
+    {"question": "What is the capital of France?", "options": ["Paris", "London", "Rome", "Berlin"], "answer": 1},
+    {"question": "Which planet is known as the Red Planet?", "options": ["Earth", "Mars", "Jupiter", "Venus"], "answer": 2},
+    {"question": "What is 5 + 7?", "options": ["10", "11", "12", "13"], "answer": 3},
+    
+    # Nouvelles questions avec différentes difficultés
+    # Facile
+    {"question": "What is the largest ocean on Earth?", "options": ["Atlantic", "Indian", "Arctic", "Pacific"], "answer": 4},
+    
+    # Moyenne
+    {"question": "Which element has the chemical symbol 'O'?", "options": ["Oxygen", "Osmium", "Ozone", "Oxygenium"], "answer": 1},
+    
+    # Difficile
+    {"question": "Who wrote the play 'Romeo and Juliet'?", "options": ["Charles Dickens", "William Shakespeare", "Jane Austen", "Homer"], "answer": 2},
+    
+    # Facile
+    {"question": "Which animal is known as the King of the Jungle?", "options": ["Elephant", "Lion", "Tiger", "Bear"], "answer": 2},
+    
+    # Moyenne
+    {"question": "What is the square root of 81?", "options": ["7", "8", "9", "10"], "answer": 3}
+
+]
 
     score = 0
 
