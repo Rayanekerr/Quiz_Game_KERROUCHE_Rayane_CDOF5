@@ -25,11 +25,13 @@ def main():
     
     # Moyenne
     {"question": "What is the square root of 81?", "options": ["7", "8", "9", "10"], "answer": 3}
+
 ]
 
 
     num_questions = min(10, len(questions))
     questions = questions[:num_questions]
+    
 
     score = 0
     time_limit = 10  # Time limit in seconds
